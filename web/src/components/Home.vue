@@ -13,7 +13,7 @@ const visibility = ref('hidden')
 
 
 watch(username, (newUsername) => {
-    const regex = /^[a-zA-Z0-9 \_\-]{3,20}$/
+    const regex = /^[a-zA-Z0-9 _\-]{3,20}$/
     console.log(visibility.value)
     if (!regex.test(newUsername)) {
         console.log('NON VALIDO')
