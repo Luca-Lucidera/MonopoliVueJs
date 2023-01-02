@@ -7,8 +7,7 @@
 
 <script setup>
 import { useUserStore } from "../store/index";
-import { io } from 'socket.io-client'
 
-const socket = io();
 const userStorage = useUserStore();
+const socket = userStorage.getUserSocket();
 </script>

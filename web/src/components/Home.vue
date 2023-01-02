@@ -14,8 +14,10 @@
     />
   </div>
   <div v-else>
-    <button @click="router.push('/lobby')">Crea una lobby</button>
-    <button @click="router.push('/join-lobby')">Partecipa a una lobby</button>
+    <button @click="socket.emit('crea-lobby', userStorage.getUsername)">
+      Crea una lobby
+    </button>
+    <button @click="alert('NOT IMPLEMENTED')">Partecipa a una lobby</button>
   </div>
 </template>
 
@@ -23,28 +25,25 @@
 //IMPORT
 import { ref, watch } from "vue";
 import { useUserStore } from "../store/index";
-import { useRouter } from 'vue-router'
-
+import { useRouter } from "vue-router";
+import { io } from "socket.io-client";
 //STATE
 const username = ref("");
 const visibility = ref("hidden");
 const btnDisable = ref(true);
 const usernameSaved = ref(false);
 const router = useRouter();
-
+const socket = io();
 //STORE
 const userStorage = useUserStore();
 
 //WATCHER
 watch(username, (newUsername) => {
   const regex = /^[a-zA-Z0-9 _\-]{3,20}$/;
-  console.log(visibility.value);
   if (!regex.test(newUsername)) {
-    console.log("NON VALIDO");
     visibility.value = "visible";
     btnDisable.value = true;
   } else {
-    console.log("VALIDO");
     visibility.value = "hidden";
     btnDisable.value = false;
   }
@@ -55,4 +54,10 @@ const saveUsername = () => {
   userStorage.username = username.value;
   usernameSaved.value = true;
 };
+
+//SOCKET EVENT
+socket.on('lobby-creata', () => {
+  userStorage.userSocket = socket;
+  router.push('/lobby')
+})
 </script>
