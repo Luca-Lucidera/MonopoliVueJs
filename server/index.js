@@ -13,7 +13,7 @@ const io = new Server(httpServer, {
 });
 
 const lobbyNameString = "lobby-di-";
-const pedine = ["🚙", "🗑", "🧲", "🎩"];
+const pedine = ["🚙", "☕", "🧲", "🎩"];
 
 let lobby = [];
 
@@ -106,16 +106,23 @@ io.on("connection", (socket) => {
   });
 
   socket.on("tira-dadi", async (lobbyId) => {
+    console.log('--------')
+    console.log('USERNAME',socket.data.username, 'POSIZIONE ATTUALE', socket.data.posizione);
     const dado1 = Math.floor(Math.random() * 6) + 1; //ESTRAE UN NUMERO TRA 1 E 6
+    console.log("DADO1", dado1)
     const dado2 = Math.floor(Math.random() * 6) + 1; //ESTRAE UN NUMERO TRA 1 E 6
+    console.log("DADO2", dado2)
     const sumDadi = dado1 + dado2;
-    console.log('DADO 1', dado1, 'DADO 2', dado2, 'TOTALE:',sumDadi);
+    console.log('SOMMA', sumDadi)
     const nextPos = socket.data.posizione + sumDadi;
+    console.log('PROSSIMA PREVISTA', nextPos)
     if(nextPos <= 39){
-      socket.data.posizione += nextPos;
+      socket.data.posizione += sumDadi;
     } else {
       socket.data.posizione = 1 + (nextPos - 39);
     }
+    console.log('POSIZIONE REALE DOPO SOMMA', socket.data.posizione)
+    console.log('--------')
     try {
       const sockets = await io.in(lobbyId).fetchSockets();
       const nPlayer = sockets.length;

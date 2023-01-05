@@ -39,14 +39,13 @@ socket.on("game-update", (serverGameInfo) => {
 <template>
   <h1>Pedina scelta dal server: {{ pedina }}</h1>
   <div>
-    <button :disabled="!myInfo.yourTurn" @click="socket.emit('tira-dadi', userStorage.getLobbyId.value)">Tira i dadi!</button>
+    <button :disabled="!myInfo.yourTurn" @click="socket.emit('tira-dadi', userStorage.getLobbyId.value)">Tira i
+      dadi!</button>
   </div>
   <div class="grid">
     <div class="gridCell" v-for="(cell, index) in tabellone.top" :key="index">
       <div v-if="!cell.isIcon">
-        <div
-          :style="{ backgroundColor: cell.colorHeader, height: '20px' }"
-        ></div>
+        <div :style="{ backgroundColor: cell.colorHeader, height: '20px' }"></div>
         <div>{{ cell.name }}</div>
       </div>
       <div v-else>
@@ -61,46 +60,10 @@ socket.on("game-update", (serverGameInfo) => {
         </template>
       </div>
     </div>
-    <div
-      :class="index % 2 == 0 ? 'gridCell' : 'gridcellButBetter'"
-      v-for="(cell, index) in tabellone.r1"
-      :key="index"
-    >
+    <div :class="index % 2 == 0 ? 'gridCell' : 'gridcellButBetter'" v-for="(cell, index) in tabellone.r1" :key="index">
       <div v-if="cell.name == 'VOID'"></div>
       <div v-else-if="!cell.isIcon">
-        <div
-          :style="{ backgroundColor: cell.colorHeader, height: '20px' }"
-        ></div>
-        <div>{{ cell.name }}</div>
-        <div>{{ cell.price }}</div>
-      </div>
-      <div v-else>
-        <div :style="{ width: cell.icon.width, height: cell.icon.height }">
-          {{ cell.name }}
-        </div>
-        <div>{{ cell.icon.emoji }}</div>
-      </div>
-      <div>
-        <template v-for="player in gameInfo">
-          <div v-if="player.posizione == cell.id" style="display: inline;">{{ player.pedina }}</div>
-        </template>
-      </div>
-      <div>
-        <template v-for="player in gameInfo">
-          <div v-if="player.posizione == cell.id" style="display: inline;">{{ player.pedina }}</div>
-        </template>
-      </div>
-    </div>
-    <div
-      :class="index % 2 == 0 ? 'gridCell' : 'gridcellButBetter'"
-      v-for="(cell, index) in tabellone.r2"
-      :key="index"
-    >
-      <div v-if="cell.name == 'VOID'"></div>
-      <div v-else-if="!cell.isIcon">
-        <div
-          :style="{ backgroundColor: cell.colorHeader, height: '20px' }"
-        ></div>
+        <div :style="{ backgroundColor: cell.colorHeader, height: '20px' }"></div>
         <div>{{ cell.name }}</div>
         <div>{{ cell.price }}</div>
       </div>
@@ -116,16 +79,10 @@ socket.on("game-update", (serverGameInfo) => {
         </template>
       </div>
     </div>
-    <div
-      :class="index % 2 == 0 ? 'gridCell' : 'gridcellButBetter'"
-      v-for="(cell, index) in tabellone.r3"
-      :key="index"
-    >
+    <div :class="index % 2 == 0 ? 'gridCell' : 'gridcellButBetter'" v-for="(cell, index) in tabellone.r2" :key="index">
       <div v-if="cell.name == 'VOID'"></div>
       <div v-else-if="!cell.isIcon">
-        <div
-          :style="{ backgroundColor: cell.colorHeader, height: '20px' }"
-        ></div>
+        <div :style="{ backgroundColor: cell.colorHeader, height: '20px' }"></div>
         <div>{{ cell.name }}</div>
         <div>{{ cell.price }}</div>
       </div>
@@ -141,16 +98,10 @@ socket.on("game-update", (serverGameInfo) => {
         </template>
       </div>
     </div>
-    <div
-      :class="index % 2 == 0 ? 'gridCell' : 'gridcellButBetter'"
-      v-for="(cell, index) in tabellone.r4"
-      :key="index"
-    >
+    <div :class="index % 2 == 0 ? 'gridCell' : 'gridcellButBetter'" v-for="(cell, index) in tabellone.r3" :key="index">
       <div v-if="cell.name == 'VOID'"></div>
       <div v-else-if="!cell.isIcon">
-        <div
-          :style="{ backgroundColor: cell.colorHeader, height: '20px' }"
-        ></div>
+        <div :style="{ backgroundColor: cell.colorHeader, height: '20px' }"></div>
         <div>{{ cell.name }}</div>
         <div>{{ cell.price }}</div>
       </div>
@@ -166,16 +117,10 @@ socket.on("game-update", (serverGameInfo) => {
         </template>
       </div>
     </div>
-    <div
-      :class="index % 2 == 0 ? 'gridCell' : 'gridcellButBetter'"
-      v-for="(cell, index) in tabellone.r5"
-      :key="index"
-    >
+    <div :class="index % 2 == 0 ? 'gridCell' : 'gridcellButBetter'" v-for="(cell, index) in tabellone.r4" :key="index">
       <div v-if="cell.name == 'VOID'"></div>
       <div v-else-if="!cell.isIcon">
-        <div
-          :style="{ backgroundColor: cell.colorHeader, height: '20px' }"
-        ></div>
+        <div :style="{ backgroundColor: cell.colorHeader, height: '20px' }"></div>
         <div>{{ cell.name }}</div>
         <div>{{ cell.price }}</div>
       </div>
@@ -191,16 +136,10 @@ socket.on("game-update", (serverGameInfo) => {
         </template>
       </div>
     </div>
-    <div
-      :class="index % 2 == 0 ? 'gridCell' : 'gridcellButBetter'"
-      v-for="(cell, index) in tabellone.r6"
-      :key="index"
-    >
+    <div :class="index % 2 == 0 ? 'gridCell' : 'gridcellButBetter'" v-for="(cell, index) in tabellone.r5" :key="index">
       <div v-if="cell.name == 'VOID'"></div>
       <div v-else-if="!cell.isIcon">
-        <div
-          :style="{ backgroundColor: cell.colorHeader, height: '20px' }"
-        ></div>
+        <div :style="{ backgroundColor: cell.colorHeader, height: '20px' }"></div>
         <div>{{ cell.name }}</div>
         <div>{{ cell.price }}</div>
       </div>
@@ -216,16 +155,10 @@ socket.on("game-update", (serverGameInfo) => {
         </template>
       </div>
     </div>
-    <div
-      :class="index % 2 == 0 ? 'gridCell' : 'gridcellButBetter'"
-      v-for="(cell, index) in tabellone.r7"
-      :key="index"
-    >
+    <div :class="index % 2 == 0 ? 'gridCell' : 'gridcellButBetter'" v-for="(cell, index) in tabellone.r6" :key="index">
       <div v-if="cell.name == 'VOID'"></div>
       <div v-else-if="!cell.isIcon">
-        <div
-          :style="{ backgroundColor: cell.colorHeader, height: '20px' }"
-        ></div>
+        <div :style="{ backgroundColor: cell.colorHeader, height: '20px' }"></div>
         <div>{{ cell.name }}</div>
         <div>{{ cell.price }}</div>
       </div>
@@ -241,37 +174,10 @@ socket.on("game-update", (serverGameInfo) => {
         </template>
       </div>
     </div>
-    <div
-      :class="index % 2 == 0 ? 'gridCell' : 'gridcellButBetter'"
-      v-for="(cell, index) in tabellone.r8"
-      :key="index"
-    >
+    <div :class="index % 2 == 0 ? 'gridCell' : 'gridcellButBetter'" v-for="(cell, index) in tabellone.r7" :key="index">
       <div v-if="cell.name == 'VOID'"></div>
       <div v-else-if="!cell.isIcon">
-        <div
-          :style="{ backgroundColor: cell.colorHeader, height: '20px' }"
-        ></div>
-        <div>{{ cell.name }}</div>
-        <div>{{ cell.price }}</div>
-      </div>
-      <div v-else>
-        <div :style="{ width: cell.icon.width, height: cell.icon.height }">
-          {{ cell.name }}
-        </div>
-        <div>{{ cell.icon.emoji }}</div>
-      </div>
-      
-    </div>
-    <div
-      :class="index % 2 == 0 ? 'gridCell' : 'gridcellButBetter'"
-      v-for="(cell, index) in tabellone.r9"
-      :key="index"
-    >
-      <div v-if="cell.name == 'VOID'"></div>
-      <div v-else-if="!cell.isIcon">
-        <div
-          :style="{ backgroundColor: cell.colorHeader, height: '20px' }"
-        ></div>
+        <div :style="{ backgroundColor: cell.colorHeader, height: '20px' }"></div>
         <div>{{ cell.name }}</div>
         <div>{{ cell.price }}</div>
       </div>
@@ -287,15 +193,47 @@ socket.on("game-update", (serverGameInfo) => {
         </template>
       </div>
     </div>
-    <div
-      class="gridCell"
-      v-for="(cell, index) in tabellone.bottom"
-      :key="index"
-    >
+    <div :class="index % 2 == 0 ? 'gridCell' : 'gridcellButBetter'" v-for="(cell, index) in tabellone.r8" :key="index">
+      <div v-if="cell.name == 'VOID'"></div>
+      <div v-else-if="!cell.isIcon">
+        <div :style="{ backgroundColor: cell.colorHeader, height: '20px' }"></div>
+        <div>{{ cell.name }}</div>
+        <div>{{ cell.price }}</div>
+      </div>
+      <div v-else>
+        <div :style="{ width: cell.icon.width, height: cell.icon.height }">
+          {{ cell.name }}
+        </div>
+        <div>{{ cell.icon.emoji }}</div>
+      </div>
+      <div>
+        <template v-for="player in gameInfo">
+          <div v-if="player.posizione == cell.id" style="display: inline;">{{ player.pedina }}</div>
+        </template>
+      </div>
+    </div>
+    <div :class="index % 2 == 0 ? 'gridCell' : 'gridcellButBetter'" v-for="(cell, index) in tabellone.r9" :key="index">
+      <div v-if="cell.name == 'VOID'"></div>
+      <div v-else-if="!cell.isIcon">
+        <div :style="{ backgroundColor: cell.colorHeader, height: '20px' }"></div>
+        <div>{{ cell.name }}</div>
+        <div>{{ cell.price }}</div>
+      </div>
+      <div v-else>
+        <div :style="{ width: cell.icon.width, height: cell.icon.height }">
+          {{ cell.name }}
+        </div>
+        <div>{{ cell.icon.emoji }}</div>
+      </div>
+      <div>
+        <template v-for="player in gameInfo">
+          <div v-if="player.posizione == cell.id" style="display: inline;">{{ player.pedina }}</div>
+        </template>
+      </div>
+    </div>
+    <div class="gridCell" v-for="(cell, index) in tabellone.bottom" :key="index">
       <div v-if="!cell.isIcon">
-        <div
-          :style="{ backgroundColor: cell.colorHeader, height: '20px' }"
-        ></div>
+        <div :style="{ backgroundColor: cell.colorHeader, height: '20px' }"></div>
         <div>{{ cell.name }}</div>
       </div>
       <div v-else>
