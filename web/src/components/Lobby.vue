@@ -33,6 +33,7 @@ const router = useRouter();
 socket.on("update-lobby", (listPlayerInLobby, lobbyOwner) => {
   playerList.value = [...listPlayerInLobby];
   owner.value = lobbyOwner;
+  userStorage.owner = lobbyOwner
 });
 
 socket.on('pedina', (pedina) => {

@@ -1,6 +1,7 @@
 const tabellone = {
   top: [
     {
+      id: 20,
       name: "PARCHEGGIO GRATUITO",
       isIcon: true,
       icon: {
@@ -10,11 +11,13 @@ const tabellone = {
       },
     },
     {
+      id: 21,
       name: "VIA MARCO POLO",
       colorHeader: "red",
       isIcon: false,
     },
     {
+      id: 22,
       name: "IMPREVISTI",
       isIcon: true,
       icon: {
@@ -24,16 +27,19 @@ const tabellone = {
       },
     },
     {
+      id: 23,
       name: "CORSO MAGELLANO",
       colorHeader: "red",
       isIcon: false,
     },
     {
+      id: 24,
       name: "LARGO COLOMBO",
       colorHeader: "red",
       isIcon: false,
     },
     {
+      id: 25,
       name: "STAZIONE SUD",
       isIcon: true,
       icon: {
@@ -43,16 +49,19 @@ const tabellone = {
       },
     },
     {
+      id: 26,
       name: "VIALE COSTANTINO",
       colorHeader: "yellow",
       isIcon: false,
     },
     {
+      id: 27,
       name: "VIALE TRAIANO",
       colorHeader: "yellow",
       isIcon: false,
     },
     {
+      id: 28,
       name: "SOCIETÀ ACQUA POTABILE",
       isIcon: true,
       icon: {
@@ -62,11 +71,13 @@ const tabellone = {
       },
     },
     {
+      id: 29,
       name: "PIAZZA GIULIO CESARE",
       colorHeader: "yellow",
       isIcon: false,
     },
     {
+      id: 30,
       name: "IN PRIGIONE",
       isIcon: true,
       icon: {
@@ -78,6 +89,7 @@ const tabellone = {
   ],
   r1: [
     {
+      id: 19,
       name: "PIAZZA DANTE",
       isIcon: false,
       colorHeader: "orange",
@@ -87,6 +99,7 @@ const tabellone = {
       name: "VOID",
     },
     {
+      id: 31,
       name: "VIA ROMA",
       isIcon: false,
       colorHeader: "green",
@@ -95,6 +108,7 @@ const tabellone = {
   ],
   r2: [
     {
+      id: 18,
       name: "CORSO RAFFAELLO",
       isIcon: false,
       colorHeader: "orange",
@@ -104,6 +118,7 @@ const tabellone = {
       name: "VOID",
     },
     {
+      id: 32,
       name: "CORSO IMPERO",
       isIcon: false,
       colorHeader: "green",
@@ -112,6 +127,7 @@ const tabellone = {
   ],
   r3: [
     {
+      id: 17,
       name: "PROBABILITÀ",
       isIcon: true,
       icon: {
@@ -124,6 +140,7 @@ const tabellone = {
       name: "VOID",
     },
     {
+      id: 33,
       name: "PROBABILITÀ",
       isIcon: true,
       icon: {
@@ -135,6 +152,7 @@ const tabellone = {
   ],
   r4: [
     {
+      id: 16,
       name: "VIA VERDI",
       isIcon: false,
       colorHeader: "orange",
@@ -144,6 +162,7 @@ const tabellone = {
       name: "VOID",
     },
     {
+      id:34,
       name: "LARGO AUGUSTO",
       isIcon: false,
       colorHeader: "green",
@@ -152,6 +171,7 @@ const tabellone = {
   ],
   r5: [
     {
+      id: 15,
       name: "STAZIONE OVEST",
       isIcon: true,
       icon: {
@@ -164,6 +184,7 @@ const tabellone = {
       name: "VOID",
     },
     {
+      id:35,
       name: "STAZIONE EST",
       isIcon: true,
       icon: {
@@ -175,6 +196,7 @@ const tabellone = {
   ],
   r6: [
     {
+      id: 14,
       name: "PIAZZA UNIVERSITÀ",
       isIcon: false,
       colorHeader: "blueviolet",
@@ -184,6 +206,7 @@ const tabellone = {
       name: "VOID",
     },
     {
+      id:36,
       name: "IMPREVISTI",
       isIcon: true,
       icon: {
@@ -195,6 +218,7 @@ const tabellone = {
   ],
   r7: [
     {
+      id: 13,
       name: "CORSO ATENEO",
       isIcon: false,
       colorHeader: "blueviolet",
@@ -204,6 +228,7 @@ const tabellone = {
       name: "VOID",
     },
     {
+      id:37,
       name: "VIALE DEI GIARDINI",
       isIcon: false,
       colorHeader: "blue",
@@ -212,6 +237,7 @@ const tabellone = {
   ],
   r8: [
     {
+      id: 12,
       name: "SOCIETÀ ELETTRICA",
       isIcon: true,
       icon: {
@@ -224,6 +250,7 @@ const tabellone = {
       name: "VOID",
     },
     {
+      id:38,
       name: "TASSA DI LUSSO",
       isIcon: true,
       icon: {
@@ -235,6 +262,7 @@ const tabellone = {
   ],
   r9: [
     {
+      id: 11,
       name: "VIA ACCADEMIA",
       isIcon: false,
       colorHeader: "blueviolet",
@@ -242,10 +270,9 @@ const tabellone = {
     },
     {
       name: "VOID",
-      isIcon: false,
-      colorHeader: "blueviolet",
     },
     {
+      id:39,
       name: "PARCO DELLA VITTORIA",
       isIcon: false,
       colorHeader: "blue",
@@ -254,24 +281,28 @@ const tabellone = {
   ],
   bottom: [
     {
+      id: 11,
       name: "PRIGIONE/TRANSITO",
       isIcon: false,
       colorHeader: "#85eda1",
       price: "0",
     },
     {
+      id: 10,
       name: "VIALE VESUVIO",
       isIcon: false,
       colorHeader: "aqua",
       price: "120M",
     },
     {
+      id: 9,
       name: "VIALE MONTEROSA",
       isIcon: false,
       colorHeader: "aqua",
       price: "100M",
     },
     {
+      id: 8,
       name: "IMPREVISTI",
       isIcon: true,
       icon: {
@@ -281,12 +312,14 @@ const tabellone = {
       },
     },
     {
+      id: 7,
       name: "BASTIONE GRAN SASSO",
       isIcon: false,
       colorHeader: "aqua",
       price: "100M",
     },
     {
+      id: 6,
       name: "STAZIONE SUD",
       isIcon: true,
       icon: {
@@ -296,6 +329,7 @@ const tabellone = {
       },
     },
     {
+      id: 5,
       name: "TASSA PATRIMONIALE",
       isIcon: true,
       icon: {
@@ -305,12 +339,14 @@ const tabellone = {
       },
     },
     {
+      id: 4,
       name: "VICOLO STRETTO",
       isIcon: false,
       colorHeader: "brown",
       price: "60M",
     },
     {
+      id: 3,
       name: "PROBABILITÀ",
       isIcon: true,
       icon: {
@@ -320,12 +356,14 @@ const tabellone = {
       },
     },
     {
+      id: 2,
       name: "VICOLO CORTO",
       isIcon: false,
       colorHeader: "brown",
       price: "60M",
     },
     {
+      id: 1,
       name: "VIA!",
       isIcon: false,
       colorHeader: "",
@@ -660,6 +698,6 @@ const tabelloneOrdinato = [
 ];
 
 module.exports = {
-    tabellone,
-    tabelloneOrdinato
-}
+  tabellone,
+  tabelloneOrdinato,
+};

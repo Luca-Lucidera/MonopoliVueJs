@@ -7,13 +7,14 @@ export const useUserStore = defineStore("user", () => {
     const userSocket = io("http://localhost:3000/");
     const lobbyId = ref('')
     const pedina = ref("")
-    //COMPUTED
+    const owner = ref("")
 
+    //COMPUTED
     const getUsername = computed(() => username); 
     const getUserSocket = computed(() => userSocket)
     const getLobbyId = computed(() => lobbyId)
     const getPedina = computed(() => pedina)
-
+    const getOwner = computed(() => owner)
     return {
         username,
         getUsername,
@@ -23,5 +24,7 @@ export const useUserStore = defineStore("user", () => {
         getLobbyId,
         pedina,
         getPedina,
+        owner,
+        getOwner
     }
 })

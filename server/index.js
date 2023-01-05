@@ -13,8 +13,9 @@ const io = new Server(httpServer, {
 });
 
 const lobbyNameString = "lobby-di-";
-const pedine = ["cariola", "cestino", "ferro", "cappello"];
+const pedine = ["🚙", "🗑", "🧲", "🎩"];
 
+let lobby = [];
 
 io.on("connection", (socket) => {
   socket.on("crea-lobby", (username) => {
@@ -24,6 +25,10 @@ io.on("connection", (socket) => {
       socket.data.lobby_owner = username;
       const lobbyId = lobbyNameString + username;
       socket.join(lobbyId);
+      lobby.push({
+        id: lobbyId,
+        turno: 1,
+      });
       socket.emit("lobby-creata");
     }
   });
@@ -62,11 +67,82 @@ io.on("connection", (socket) => {
           const s = sockets.at(i);
           let pedina = pedine.at(i);
           s.data.pedina = pedina;
+          s.data.posizione = 1;
+          s.data.turno = i + 1;
           s.emit("pedina", pedina);
         }
       } catch (error) {
         console.log("errore", error);
       }
+    }
+  });
+
+  socket.on("game-info", async (lobbyId) => {
+    if (!lobbyId) socket.emit("lobbyId-vuoto", "errore: lobbyId vuoto!");
+    else {
+      let gameInfo = [];
+      try {
+        const sockets = await io.in(lobbyId).fetchSockets();
+        let currentGameRound = -1;
+        lobby.forEach((game) => {
+          if (game.id == lobbyId) {
+            currentGameRound = game.turno;
+          }
+        });
+        sockets.forEach((s) => {
+          const urTurn = currentGameRound == s.data.turno;
+          gameInfo.push({
+            username: s.data.username,
+            pedina: s.data.pedina,
+            posizione: s.data.posizione,
+            yourTurn: urTurn,
+          });
+        });
+        io.in(lobbyId).emit("game-update", gameInfo);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  });
+
+  socket.on("tira-dadi", async (lobbyId) => {
+    const dado1 = Math.floor(Math.random() * 6) + 1; //ESTRAE UN NUMERO TRA 1 E 6
+    const dado2 = Math.floor(Math.random() * 6) + 1; //ESTRAE UN NUMERO TRA 1 E 6
+    const sumDadi = dado1 + dado2;
+    console.log('DADO 1', dado1, 'DADO 2', dado2, 'TOTALE:',sumDadi);
+    const nextPos = socket.data.posizione + sumDadi;
+    if(nextPos <= 39){
+      socket.data.posizione += nextPos;
+    } else {
+      socket.data.posizione = 1 + (nextPos - 39);
+    }
+    try {
+      const sockets = await io.in(lobbyId).fetchSockets();
+      const nPlayer = sockets.length;
+      let currentGameRound = -1;
+      lobby.forEach((game) => {
+        if(game.id == lobbyId){
+          if(game.turno == nPlayer) {
+            game.turno = 1;
+          } else {
+            game.turno++;
+          }
+          currentGameRound = game.turno;
+        }
+      });
+      let gameInfo = [];
+      sockets.forEach((s) => {
+        const urTurn = currentGameRound == s.data.turno;
+        gameInfo.push({
+          username: s.data.username,
+          pedina: s.data.pedina,
+          posizione: s.data.posizione,
+          yourTurn: urTurn,
+        });
+      });
+      io.in(lobbyId).emit("game-update", gameInfo);
+    } catch (error) {
+      console.log(error)
     }
   });
 });
