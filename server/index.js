@@ -119,7 +119,7 @@ io.on("connection", (socket) => {
     if(nextPos <= 39){
       socket.data.posizione += sumDadi;
     } else {
-      socket.data.posizione = 1 + (nextPos - 39);
+      socket.data.posizione = (nextPos - 39);
     }
     console.log('POSIZIONE REALE DOPO SOMMA', socket.data.posizione)
     console.log('--------')
