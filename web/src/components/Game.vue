@@ -24,6 +24,9 @@ onMounted(async () => {
   }
 });
 
+function test() {
+  confirm("test dialog")
+}
 //SOCKET EVENT
 socket.on("game-update", (serverGameInfo) => {
   gameInfo.value = serverGameInfo;
@@ -37,6 +40,9 @@ socket.on("game-update", (serverGameInfo) => {
 </script>
 
 <template>
+  <button @click="test">
+    test
+  </button>
   <h1>Pedina scelta dal server: {{ pedina }}</h1>
   <div>
     <button :disabled="!myInfo.yourTurn" @click="socket.emit('tira-dadi', userStorage.getLobbyId.value)">Tira i
@@ -47,12 +53,14 @@ socket.on("game-update", (serverGameInfo) => {
       <div v-if="!cell.isIcon">
         <div :style="{ backgroundColor: cell.colorHeader, height: '20px' }"></div>
         <div>{{ cell.name }}</div>
+        <div>{{ cell.price  }}</div>
       </div>
       <div v-else>
         <div :style="{ width: cell.icon.width, height: cell.icon.height }">
           {{ cell.name }}
         </div>
         <div>{{ cell.icon.emoji }}</div>
+        <div> {{ cell.price  }}</div>
       </div>
       <div>
         <template v-for="player in gameInfo">
@@ -72,6 +80,7 @@ socket.on("game-update", (serverGameInfo) => {
           {{ cell.name }}
         </div>
         <div>{{ cell.icon.emoji }}</div>
+        <div> {{ cell.price }}</div>
       </div>
       <div>
         <template v-for="player in gameInfo">
@@ -91,6 +100,7 @@ socket.on("game-update", (serverGameInfo) => {
           {{ cell.name }}
         </div>
         <div>{{ cell.icon.emoji }}</div>
+        <div> {{ cell.price }}</div>
       </div>
       <div>
         <template v-for="player in gameInfo">
@@ -110,6 +120,7 @@ socket.on("game-update", (serverGameInfo) => {
           {{ cell.name }}
         </div>
         <div>{{ cell.icon.emoji }}</div>
+        <div> {{ cell.price }}</div>
       </div>
       <div>
         <template v-for="player in gameInfo">
@@ -129,6 +140,7 @@ socket.on("game-update", (serverGameInfo) => {
           {{ cell.name }}
         </div>
         <div>{{ cell.icon.emoji }}</div>
+        <div> {{ cell.price }}</div>
       </div>
       <div>
         <template v-for="player in gameInfo">
@@ -148,6 +160,7 @@ socket.on("game-update", (serverGameInfo) => {
           {{ cell.name }}
         </div>
         <div>{{ cell.icon.emoji }}</div>
+        <div> {{ cell.price }}</div>
       </div>
       <div>
         <template v-for="player in gameInfo">
@@ -167,6 +180,7 @@ socket.on("game-update", (serverGameInfo) => {
           {{ cell.name }}
         </div>
         <div>{{ cell.icon.emoji }}</div>
+        <div> {{ cell.price }}</div>
       </div>
       <div>
         <template v-for="player in gameInfo">
@@ -186,6 +200,7 @@ socket.on("game-update", (serverGameInfo) => {
           {{ cell.name }}
         </div>
         <div>{{ cell.icon.emoji }}</div>
+        <div> {{ cell.price }}</div>
       </div>
       <div>
         <template v-for="player in gameInfo">
@@ -205,6 +220,7 @@ socket.on("game-update", (serverGameInfo) => {
           {{ cell.name }}
         </div>
         <div>{{ cell.icon.emoji }}</div>
+        <div> {{ cell.price }}</div>
       </div>
       <div>
         <template v-for="player in gameInfo">
@@ -224,6 +240,7 @@ socket.on("game-update", (serverGameInfo) => {
           {{ cell.name }}
         </div>
         <div>{{ cell.icon.emoji }}</div>
+        <div> {{ cell.price }}</div>
       </div>
       <div>
         <template v-for="player in gameInfo">
@@ -235,12 +252,14 @@ socket.on("game-update", (serverGameInfo) => {
       <div v-if="!cell.isIcon">
         <div :style="{ backgroundColor: cell.colorHeader, height: '20px' }"></div>
         <div>{{ cell.name }}</div>
+        <div> {{ cell.price  }}</div>
       </div>
       <div v-else>
         <div :style="{ width: cell.icon.width, height: cell.icon.height }">
           {{ cell.name }}
         </div>
         <div>{{ cell.icon.emoji }}</div>
+        <div> {{ cell.price }}</div>
       </div>
       <div>
         <template v-for="player in gameInfo">
@@ -265,7 +284,9 @@ socket.on("game-update", (serverGameInfo) => {
 }
 
 .gridCell {
-  padding: 20px;
+  padding: 10px;
+  border: 1px gray;
+  border-style: solid; 
 }
 
 .gridcellButBetter {

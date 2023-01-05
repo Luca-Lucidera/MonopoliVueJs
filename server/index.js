@@ -106,7 +106,6 @@ io.on("connection", (socket) => {
   });
 
   socket.on("tira-dadi", async (lobbyId) => {
-    console.log('--------')
     console.log('USERNAME',socket.data.username, 'POSIZIONE ATTUALE', socket.data.posizione);
     const dado1 = Math.floor(Math.random() * 6) + 1; //ESTRAE UN NUMERO TRA 1 E 6
     console.log("DADO1", dado1)

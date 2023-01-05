@@ -1,8 +1,10 @@
+//EVENT ENUMS: default Vuoi comprare | 2 Probabilità | 3 Imprevisti | 4 Tassa patrimoniale | 5 Tassa pedaggio | 6 vai in prigione | 7 TASSA DI LUSSO
 const tabellone = {
   top: [
     {
       id: 20,
       name: "PARCHEGGIO GRATUITO",
+      price: "GRATIS",
       isIcon: true,
       icon: {
         emoji: "🚗",
@@ -15,11 +17,14 @@ const tabellone = {
       name: "VIA MARCO POLO",
       colorHeader: "red",
       isIcon: false,
+      price: "220M",
     },
     {
       id: 22,
       name: "IMPREVISTI",
       isIcon: true,
+      event: 3,
+      price: "",
       icon: {
         emoji: "❔",
         width: 200,
@@ -31,16 +36,19 @@ const tabellone = {
       name: "CORSO MAGELLANO",
       colorHeader: "red",
       isIcon: false,
+      price: "220M"
     },
     {
       id: 24,
       name: "LARGO COLOMBO",
       colorHeader: "red",
       isIcon: false,
+      price: "240M"
     },
     {
       id: 25,
       name: "STAZIONE SUD",
+      price: "200M",
       isIcon: true,
       icon: {
         emoji: "🚅",
@@ -51,18 +59,21 @@ const tabellone = {
     {
       id: 26,
       name: "VIALE COSTANTINO",
+      price: "260M",
       colorHeader: "yellow",
       isIcon: false,
     },
     {
       id: 27,
       name: "VIALE TRAIANO",
+      price: "260M",
       colorHeader: "yellow",
       isIcon: false,
     },
     {
       id: 28,
       name: "SOCIETÀ ACQUA POTABILE",
+      price: "150M",
       isIcon: true,
       icon: {
         emoji: "💧",
@@ -73,12 +84,14 @@ const tabellone = {
     {
       id: 29,
       name: "PIAZZA GIULIO CESARE",
+      price: "280M",
       colorHeader: "yellow",
       isIcon: false,
     },
     {
       id: 30,
       name: "IN PRIGIONE",
+      event: 4,
       isIcon: true,
       icon: {
         emoji: "👮",
@@ -112,7 +125,7 @@ const tabellone = {
       name: "CORSO RAFFAELLO",
       isIcon: false,
       colorHeader: "orange",
-      price: "200M",
+      price: "180M",
     },
     {
       name: "VOID",
@@ -129,6 +142,8 @@ const tabellone = {
     {
       id: 17,
       name: "PROBABILITÀ",
+      event: 2,
+      price: "180M",
       isIcon: true,
       icon: {
         emoji: "💷",
@@ -142,6 +157,8 @@ const tabellone = {
     {
       id: 33,
       name: "PROBABILITÀ",
+      event: 2,
+      price: "320M",
       isIcon: true,
       icon: {
         emoji: "💷",
@@ -173,6 +190,7 @@ const tabellone = {
     {
       id: 15,
       name: "STAZIONE OVEST",
+      price: "200M",
       isIcon: true,
       icon: {
         emoji: "🚅",
@@ -186,6 +204,7 @@ const tabellone = {
     {
       id:35,
       name: "STAZIONE EST",
+      price: "200M",
       isIcon: true,
       icon: {
         emoji: "🚅",
@@ -200,7 +219,7 @@ const tabellone = {
       name: "PIAZZA UNIVERSITÀ",
       isIcon: false,
       colorHeader: "blueviolet",
-      price: "200M",
+      price: "160M",
     },
     {
       name: "VOID",
@@ -208,6 +227,7 @@ const tabellone = {
     {
       id:36,
       name: "IMPREVISTI",
+      event: 3,
       isIcon: true,
       icon: {
         emoji: "❔",
@@ -222,7 +242,7 @@ const tabellone = {
       name: "CORSO ATENEO",
       isIcon: false,
       colorHeader: "blueviolet",
-      price: "200M",
+      price: "140M",
     },
     {
       name: "VOID",
@@ -232,13 +252,14 @@ const tabellone = {
       name: "VIALE DEI GIARDINI",
       isIcon: false,
       colorHeader: "blue",
-      price: "300M",
+      price: "350M",
     },
   ],
   r8: [
     {
       id: 12,
       name: "SOCIETÀ ELETTRICA",
+      price: "150M",
       isIcon: true,
       icon: {
         emoji: "💡",
@@ -252,6 +273,7 @@ const tabellone = {
     {
       id:38,
       name: "TASSA DI LUSSO",
+      price: "100M",
       isIcon: true,
       icon: {
         emoji: "💍",
@@ -266,7 +288,7 @@ const tabellone = {
       name: "VIA ACCADEMIA",
       isIcon: false,
       colorHeader: "blueviolet",
-      price: "200M",
+      price: "140M",
     },
     {
       name: "VOID",
@@ -285,7 +307,7 @@ const tabellone = {
       name: "PRIGIONE/TRANSITO",
       isIcon: false,
       colorHeader: "#85eda1",
-      price: "0",
+      price: "",
     },
     {
       id: 10,
@@ -304,6 +326,7 @@ const tabellone = {
     {
       id: 8,
       name: "IMPREVISTI",
+      event: 3,
       isIcon: true,
       icon: {
         emoji: "❔",
@@ -321,6 +344,7 @@ const tabellone = {
     {
       id: 6,
       name: "STAZIONE SUD",
+      price: "200M",
       isIcon: true,
       icon: {
         emoji: "🚅",
@@ -331,6 +355,8 @@ const tabellone = {
     {
       id: 5,
       name: "TASSA PATRIMONIALE",
+      event: 4,
+      price: "200M",
       isIcon: true,
       icon: {
         emoji: "✨",
@@ -348,6 +374,7 @@ const tabellone = {
     {
       id: 3,
       name: "PROBABILITÀ",
+      event: 2,
       isIcon: true,
       icon: {
         emoji: "💷",
@@ -613,6 +640,7 @@ const tabelloneOrdinato = [
   {
     id: 30,
     name: "IN PRIGIONE",
+    event: 6,
     isIcon: true,
     icon: {
       emoji: "👮",
