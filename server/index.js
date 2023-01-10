@@ -18,6 +18,7 @@ const pedine = ["🚙", "☕", "🧲", "🎩"];
 let lobby = [];
 
 io.on("connection", (socket) => {
+  //CREAZIONE DELLA LOBBY
   socket.on("crea-lobby", (username) => {
     if (!username) socket.emit("username-vuoto");
     else {
@@ -33,10 +34,12 @@ io.on("connection", (socket) => {
     }
   });
 
+  //SOCKET SI POSSONO UNIRE ALLA LOBBY E AGGIORNA I GIOCATORI PRESENTI
   socket.on("join-lobby", async (username, lobbyId) => {
-    if (!username) socket.emit("username-vuoto");
+    if (!username || !lobbyId || lobbyId.indexOf("lobby-di-") != 0) socket.emit("username-vuoto");
     else {
       socket.data.username = username;
+      //!TODO: AGGIUNGI CONTROLLO PER LOBBY ID
       socket.join(lobbyId);
       socket.emit("joined");
       try {
@@ -54,6 +57,7 @@ io.on("connection", (socket) => {
     }
   });
 
+  //OWNER DELLA LOBBY FA PARTIRE IL GIOCO | ASSEGNA ALLE SOCKET LA PEDINA, IL TURNO E LA POSIZIONE DI PARTENZA
   socket.on("game-start", async (lobbyId) => {
     if (!lobbyId || lobbyId.indexOf("lobby-di-") != 0)
       socket.emit(
@@ -106,22 +110,15 @@ io.on("connection", (socket) => {
   });
 
   socket.on("tira-dadi", async (lobbyId) => {
-    console.log('USERNAME',socket.data.username, 'POSIZIONE ATTUALE', socket.data.posizione);
     const dado1 = Math.floor(Math.random() * 6) + 1; //ESTRAE UN NUMERO TRA 1 E 6
-    console.log("DADO1", dado1)
     const dado2 = Math.floor(Math.random() * 6) + 1; //ESTRAE UN NUMERO TRA 1 E 6
-    console.log("DADO2", dado2)
     const sumDadi = dado1 + dado2;
-    console.log('SOMMA', sumDadi)
     const nextPos = socket.data.posizione + sumDadi;
-    console.log('PROSSIMA PREVISTA', nextPos)
     if(nextPos <= 39){
       socket.data.posizione += sumDadi;
     } else {
       socket.data.posizione = (nextPos - 39);
     }
-    console.log('POSIZIONE REALE DOPO SOMMA', socket.data.posizione)
-    console.log('--------')
     try {
       const sockets = await io.in(lobbyId).fetchSockets();
       const nPlayer = sockets.length;

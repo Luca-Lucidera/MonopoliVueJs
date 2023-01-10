@@ -1,4 +1,3 @@
-//EVENT ENUMS: default Vuoi comprare | 2 Probabilità | 3 Imprevisti | 4 Tassa patrimoniale | 5 Tassa pedaggio | 6 vai in prigione | 7 TASSA DI LUSSO
 const tabellone = {
   top: [
     {
@@ -399,6 +398,14 @@ const tabellone = {
   ],
 };
 
+
+/* EVENTI DEL TABELLONE
+- 1: ACQUISTA
+- 2: PAGA AFFITTO
+- 3: PROBABILITÀ
+- 4: TASSA PATRIMONIALE
+*/
+
 const tabelloneOrdinato = [
   {
     id: 1,
@@ -406,6 +413,7 @@ const tabelloneOrdinato = [
     isIcon: false,
     colorHeader: "",
     price: "",
+    action: null,
   },
   {
     id: 2,
@@ -413,6 +421,7 @@ const tabelloneOrdinato = [
     isIcon: false,
     colorHeader: "brown",
     price: "60M",
+    action: 1,
   },
   {
     id: 3,
@@ -423,6 +432,7 @@ const tabelloneOrdinato = [
       width: 200,
       height: 200,
     },
+    action: 3
   },
   {
     id: 4,
@@ -430,6 +440,7 @@ const tabelloneOrdinato = [
     isIcon: false,
     colorHeader: "brown",
     price: "60M",
+    action: 1,
   },
   {
     id: 5,
